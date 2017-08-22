@@ -7,7 +7,7 @@ import { employeeUpdate, employeeSave, employeeDelete } from '../actions';
 import EmployeeForm from './EmployeeForm';
 
 class EmployeeEdit extends Component {
-  state = { showModal: false }
+  state = { showModal: false };
   componentWillMount() {
     _.each(this.props.employee, (value, prop) => {
       this.props.employeeUpdate({ prop, value });
@@ -28,7 +28,7 @@ class EmployeeEdit extends Component {
   onAccept() {
     const { uid } = this.props.employee;
 
-    this.props.employeeDelete(uid);
+    this.props.employeeDelete({ uid });
   }
 
   onDecline() {
@@ -51,7 +51,7 @@ class EmployeeEdit extends Component {
         </CardSection>
 
         <CardSection>
-          <Button onPress={this.setState({ showModal: !this.setState.showModal })}>
+          <Button onPress={() => this.setState({ showModal: !this.setState.showModal })}>
             Fire Employee
           </Button>
         </CardSection>
